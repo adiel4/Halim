@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import script
 
 
 # df = pd.read_excel('excel.xlsx')
@@ -9,6 +10,13 @@ def main(excel_filename: str):
     if not os.path.exists(excel_filename):
         print('Incorrect filename. Try again')
         return None
+    df = pd.read_excel(excel_filename)
+    for i in range(len(df['fio'])):
+        file = script.edit_jpeg('raw_cert.jpg', df['fio'][i], str(df['id'][i]))
+        os.remove(file)
+
+
+
 
 
 
